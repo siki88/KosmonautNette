@@ -1,0 +1,109 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<div id="banner">
+	<h1 n:block=title>Kosmonaut</h1>
+</div>
+
+<div id="content">
+
+	<div class="uk-text-lowercase">
+		Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Sed ac dolor sit amet purus malesuada congue.
+	</div>
+
+
+	<p uk-margin>
+		<a class="uk-button uk-button-default" href="#" uk-toggle="target: #modal-sections">PŘIDAT</a>
+
+		<p>
+			<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+		</p>
+
+
+	</p>
+
+	<table class="uk-table uk-table-justify uk-table-divider">
+		<thead>
+		<tr>
+			<th>
+				<div class="uk-inline">
+					<button class="uk-button uk-button-default alternative-button" type="button"><span uk-icon="icon:  triangle-down"></span> JMÉNO</button>
+					<div uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a href="#">Sestupně</a></li>
+							<li><a href="#">Vzestupně</a></li>
+						</ul>
+					</div>
+				</div>
+			</th>
+			<th>
+				<div class="uk-inline">
+					<button class="uk-button uk-button-default alternative-button" type="button"><span uk-icon="icon:  triangle-down"></span> PŘÍJMENÍ</button>
+					<div uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a href="#">Sestupně</a></li>
+							<li><a href="#">Vzestupně</a></li>
+						</ul>
+					</div>
+				</div>
+			</th>
+			<th>
+				<div class="uk-inline">
+					<button class="uk-button uk-button-default alternative-button" type="button"><span uk-icon="icon:  triangle-down"></span> DATUM NAROZENÍ</button>
+					<div uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a href="#">Sestupně</a></li>
+							<li><a href="#">Vzestupně</a></li>
+						</ul>
+					</div>
+				</div>
+			</th>
+			<th>
+				<div class="uk-inline">
+					<button class="uk-button uk-button-default alternative-button" type="button"><span uk-icon="icon:  triangle-down"></span> SUPERSCHOPNOST</button>
+					<div uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a href="#">Sestupně</a></li>
+							<li><a href="#">Vzestupně</a></li>
+						</ul>
+					</div>
+				</div>
+			</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody n:if="count($users)">
+		<tr n:foreach="$users as $myuser">
+			<td>{$myuser->name}</td>
+			<td>{$myuser->surname}</td>
+			<td>{$myuser->birth|date:'%d.%m.%Y'}</td>
+			<td>{$myuser->skills}</td>
+			<td>
+				<a n:href="delete!, id => $myuser->id" class="uk-button uk-button-default" onClick="return confirm('Opravdu smazat?');"  >Smazat</a>
+				<button class="uk-button uk-button-default" type="button" uk-icon="file-edit" uk-toggle="target: #modal-sections-edit"></button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+</div>
+{/block}
+
+
+{block scripts}
+{include parent}
+<script src="https://files.nette.org/sandbox/jush.js"></script>
+<script>
+
+</script>
+{/block}
+
+
+
+
+
+{block head}
+<style>
+</style>
+{/block}
